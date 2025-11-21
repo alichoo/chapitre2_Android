@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">chapitre2</string>
+    <string name="title_activity_login">الدخول</string>
+    <string name="prompt_email">البريد</string>
+    <string name="placeholdernom">الاسم</string>
+    <string name="textbutton">اضغط هنا</string>
+</resources>

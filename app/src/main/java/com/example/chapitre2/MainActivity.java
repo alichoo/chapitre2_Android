@@ -49,9 +49,9 @@ ActivityMainBinding binding;
     }
 
     public void greet(View view) {
-       /// Intent intent = new Intent(this, LoginActivity.class);
-        /// startActivity(intent);
-       textView.setText( textView.getText()+"\nHello Mr/Mrs: "+greeting.getText());
+        Intent intent = new Intent(this, ListContact.class);
+        startActivity(intent);
+      /// textView.setText( textView.getText()+"\nHello Mr/Mrs: "+greeting.getText());
        Log.d("MainActivity","Hello Mr/Mrs: "+greeting.getText());
        Toast.makeText(this,"Hello Mr/Mrs: "+greeting.getText(),Toast.LENGTH_SHORT).show();
     }

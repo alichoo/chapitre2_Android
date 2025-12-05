@@ -1,5 +1,7 @@
 package com.example.chapitre2;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -28,11 +30,15 @@ public class ListContact extends AppCompatActivity implements OnUserClickListene
             return insets;
         });
         RecyclerView recyclerView = findViewById(R.id.my_recycler_view);
+Intent intent = getIntent();
+int userId = intent.getIntExtra("USER_ID", -1);
+String userName = intent.getStringExtra("USER_NAME");
 
         users = new ArrayList<>();
-        users.add(new User(1, "Ali Chouikhi"));
+      /*  users.add(new User(1, "Ali Chouikhi"));
         users.add(new User(2, "Fatma Ben Salah"));
-        users.add(new User(3, "Mohamed Trabelsi"));
+        users.add(new User(3, "Mohamed Trabelsi"));*/
+        users.add(new User(userId, userName));
 
         userAdapter = new UserAdapter(users, this); // 'this' car l'Activity implémente l'interface
         recyclerView.setAdapter(userAdapter);
@@ -41,6 +47,11 @@ public class ListContact extends AppCompatActivity implements OnUserClickListene
 
     @Override
     public void onEditClick(User user) {
+        String phoneNumber = "tel:99490095";
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse(phoneNumber));
+
+        startActivity(intent);
         Toast.makeText(this, "Modification de " + user.getName(), Toast.LENGTH_SHORT).show();
     }
 
@@ -50,7 +61,7 @@ public class ListContact extends AppCompatActivity implements OnUserClickListene
         userAdapter.notifyItemRemoved(position);
         // Important: Notifier aussi les items suivants pour mettre à jour leur position
         userAdapter.notifyItemRangeChanged(position, users.size());
-
+finish();
         Toast.makeText(this, user.getName() + " a été supprimé", Toast.LENGTH_SHORT).show();
     }
 

@@ -11,4 +11,5 @@
     <string name="login_failed">"Login failed"</string>
     <string name="placeholdernom">Quel est votre nom ?</string>
     <string name="textbutton">Saluer</string>
+    <string name="preference_file_key">gh41jklmk5</string>
 </resources>

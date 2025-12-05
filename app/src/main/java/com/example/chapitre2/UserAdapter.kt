@@ -42,7 +42,7 @@ class UserAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nameTextView.text = userList[position].name
+        holder.nameTextView.text = userList[position].id.toString() +" "+userList[position].name
     }
 
     override fun getItemCount() = userList.size

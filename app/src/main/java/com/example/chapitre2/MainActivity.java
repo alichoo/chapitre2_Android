@@ -1,6 +1,11 @@
 package com.example.chapitre2;
 
+
+import static androidx.core.app.PendingIntentCompat.getActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.renderscript.ScriptGroup;
 import android.util.Log;
@@ -18,6 +23,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.chapitre2.databinding.ActivityMainBinding;
 import com.example.chapitre2.ui.login.LoginActivity;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 TextView textView;
@@ -50,7 +57,17 @@ ActivityMainBinding binding;
 
     public void greet(View view) {
         Intent intent = new Intent(this, ListContact.class);
+        intent.putExtra("USER_ID", new Random().nextInt());
+        intent.putExtra("USER_NAME", greeting.getText().toString());
         startActivity(intent);
+        finish();
+///
+        SharedPreferences sharedPref = this.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("name", greeting.getText().toString());
+        editor.apply();
+       // Toast.makeText(this,"Hello Mr/Mrs: "+greeting.getText(),Toast.LENGTH_SHORT).show();
       /// textView.setText( textView.getText()+"\nHello Mr/Mrs: "+greeting.getText());
        Log.d("MainActivity","Hello Mr/Mrs: "+greeting.getText());
        Toast.makeText(this,"Hello Mr/Mrs: "+greeting.getText(),Toast.LENGTH_SHORT).show();
